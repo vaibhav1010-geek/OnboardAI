@@ -1,0 +1,1541 @@
+{
+  "label": "full-baseline-PARTIAL",
+  "config": {
+    "llm": "openai/gpt-oss-20b",
+    "temperature": 0.1,
+    "embedding_model": "BAAI/bge-m3",
+    "chunk_size": 900,
+    "chunk_overlap": 120,
+    "top_k": 4,
+    "min_relevance": 0.35,
+    "stale_after_days": 365
+  },
+  "summary": {
+    "overall": {
+      "n": 35,
+      "passed": 35,
+      "pct": 100.0
+    },
+    "by_category": {
+      "fact": {
+        "n": 25,
+        "passed": 25,
+        "pct": 100.0
+      },
+      "multi": {
+        "n": 7,
+        "passed": 7,
+        "pct": 100.0
+      },
+      "conflict": {
+        "n": 3,
+        "passed": 3,
+        "pct": 100.0
+      }
+    },
+    "secondary": {
+      "retrieval_hit_rate": {
+        "pct": 100.0,
+        "n": 35
+      },
+      "citation_rate": {
+        "pct": 100.0,
+        "n": 35
+      },
+      "false_escalation_rate": {
+        "pct": 0.0,
+        "n": 35
+      }
+    }
+  },
+  "results": [
+    {
+      "case": {
+        "id": "F01",
+        "category": "fact",
+        "question": "How many days of annual leave do I get per year?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "24"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "24 days of paid annual leave per calendar year."
+      },
+      "raw": {
+        "final": "You’re entitled to **24 days of paid annual leave per calendar year**. Leave accrues at 2 days per month from your joining date and can be used once it has accrued. Up to 10 unused days can be carried over into the next year; any remaining days lapse on December 31.  \n\nSources  \n[1] Leave and Holiday Policy – Annual leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[2] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[3] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[4] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "annual leave days per year"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F02",
+        "category": "fact",
+        "question": "How fast does my annual leave build up?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "2 days",
+            "two days"
+          ],
+          [
+            "month"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "It accrues at 2 days per month."
+      },
+      "raw": {
+        "final": "Annual leave accrues at **2 days per month** from your joining date, giving you 24 days per calendar year. You can use the leave as soon as it’s accrued, and up to 10 unused days may be carried over into the next year (any excess lapses on December 31).  \n\nSources  \n[1] Leave and Holiday Policy – Annual leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[2] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[3] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[4] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "annual leave build up policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F03",
+        "category": "fact",
+        "question": "How many unused leave days can I carry over to next year?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "10"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "Up to 10 days carry over; the rest lapse on 31 December."
+      },
+      "raw": {
+        "final": "You can carry over up to **10 unused annual leave days** into the next calendar year. Anything beyond that lapses on December 31.  \n\nSources  \n[1] Leave and Holiday Policy – Annual leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[2] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[3] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.\n\n---\n\n[4] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "unused leave days carry over next year"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F04",
+        "category": "fact",
+        "question": "Where do I apply for leave?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "peoplehub"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "In the PeopleHub portal under Time Off > New Request."
+      },
+      "raw": {
+        "final": "You can apply for leave in the **PeopleHub portal**:\n\n1. Log in to PeopleHub.  \n2. Navigate to **Time Off** → **New Request**.  \n3. Fill out the request and submit.  \n   - Leave of 3+ consecutive working days must be requested at least 5 working days in advance.  \n   - Your manager will approve or decline within 2 working days.  \n\n[1] Leave and Holiday Policy – How to apply (updated 2026‑01‑15)  \n\n**Sources**  \n[1] Leave and Holiday Policy – How to apply (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.\n\n---\n\n[2] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[3] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[4] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "apply for leave"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F05",
+        "category": "fact",
+        "question": "How much notice do I need to give for a 4 day leave?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "5 working days",
+            "five working days",
+            "5 business days"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "At least 5 working days in advance for 3 or more consecutive days."
+      },
+      "raw": {
+        "final": "For a 4‑day leave you need to submit a request at least **5 working days in advance**. Your manager will review and approve or decline the request within 2 working days.  \n\nSources  \n[1] Leave and Holiday Policy – How to apply (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.\n\n---\n\n[2] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.\n\n---\n\n[3] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[4] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "notice for leave 4 day leave notice period policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F06",
+        "category": "fact",
+        "question": "How many paid sick days do I get?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "8 ",
+            "eight"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "8 paid sick days per year."
+      },
+      "raw": {
+        "final": "You’re entitled to **8 paid sick days per year**.  \nA medical certificate is required if the sick leave covers 3 or more consecutive days, and you should let your manager know as early as possible on the first day of absence.  \n\nSources  \n[1] Leave and Holiday Policy – Sick leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[2] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - Payment (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > Payment\nApproved claims are paid within 15 working days of approval.\n\n---\n\n[4] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "paid sick days policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F07",
+        "category": "fact",
+        "question": "When do I need a medical certificate for sick leave?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "3 or more",
+            "three or more",
+            "3 consecutive",
+            "three consecutive"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "When sick leave covers 3 or more consecutive days."
+      },
+      "raw": {
+        "final": "You need a medical certificate if your sick leave is **3 or more consecutive days**.  \nTell your manager as early as possible on the first day of absence.\n\nSources  \n[1] Leave and Holiday Policy – Sick leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[2] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - How to submit (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > How to submit\nSubmit claims by email to finance@acmedemo.example within 45 days of the expense date.\n\n---\n\n[4] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "medical certificate sick leave Acme Demo Co policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F08",
+        "category": "fact",
+        "question": "How many public holidays does the company observe?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "10",
+            "ten"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "10 public holidays per year."
+      },
+      "raw": {
+        "final": "The company observes **10 public holidays per year**【1】.\n\n**Sources**\n\n[1] Leave and Holiday Policy – Public holidays (updated 2026-01-15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Public holidays (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Public holidays\nThe company observes 10 public holidays per year. The list for each year is published in PeopleHub in December of the previous year. If you work in a different city, the holiday list for your office applies.\n\n---\n\n[2] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[3] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.\n\n---\n\n[4] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "public holidays company observe"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F09",
+        "category": "fact",
+        "question": "How long is parental leave for a primary caregiver?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "26"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "26 weeks of paid leave for primary caregivers."
+      },
+      "raw": {
+        "final": "Primary caregivers are entitled to **26 weeks of paid parental leave**. Secondary caregivers receive 4 weeks. To start the process, contact the People Team at people@acmedemo.example.  \n\nSources  \n[1] Leave and Holiday Policy – Parental leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[2] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[3] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[4] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "parental leave primary caregiver length"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F10",
+        "category": "fact",
+        "question": "How much is the home office allowance and when can I claim it?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "15000"
+          ],
+          [
+            "90 days",
+            "90"
+          ]
+        ],
+        "expected_sources": [
+          "remote_work_policy.md"
+        ],
+        "reference": "A one-time Rs 15,000 allowance after 90 days with the company."
+      },
+      "raw": {
+        "final": "The home‑office allowance is **Rs 15,000**.  \nYou can claim it **after you have completed 90 days** with the company. Submit the claim through ExpenseDesk, attaching receipts for the chair, desk, or monitor you purchase. Once approved, the reimbursement will be paid in the next payroll cycle—typically within 10 working days of approval.  \n\nSources  \n[1] Remote and Hybrid Work Policy – Home office allowance (updated 2026‑02‑01)  \n[2] Expense Reimbursement Policy – Payment (updated 2026‑02‑10)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Remote and Hybrid Work Policy - Home office allowance (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Home office allowance\nAfter completing 90 days with the company, you can claim a one-time home office allowance of Rs 15,000 for a chair, desk or monitor. Submit it through ExpenseDesk with receipts.\n\n---\n\n[2] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.\n\n---\n\n[3] Remote and Hybrid Work Policy - Internet (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Internet\nThe company does not reimburse home internet, but a monthly mobile data allowance is available for on-call roles only.\n\n---\n\n[4] Expense Reimbursement Policy (2023 version) - How to submit (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > How to submit\nSubmit claims by email to finance@acmedemo.example within 45 days of the expense date.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "home office allowance claim policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F11",
+        "category": "fact",
+        "question": "Which days am I expected to be in the office?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "tuesday"
+          ],
+          [
+            "wednesday"
+          ],
+          [
+            "thursday"
+          ]
+        ],
+        "expected_sources": [
+          "remote_work_policy.md"
+        ],
+        "reference": "Tuesday, Wednesday and Thursday."
+      },
+      "raw": {
+        "final": "You’re expected to be in the office **Tuesday, Wednesday, and Thursday** each week. Mondays and Fridays are flexible remote days unless your team specifies otherwise.  \n\nSources  \n[1] Remote and Hybrid Work Policy – Hybrid schedule (updated 2026-02-01)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Remote and Hybrid Work Policy - Hybrid schedule (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Hybrid schedule\nEmployees work from the office 3 days a week: Tuesday, Wednesday and Thursday. Mondays and Fridays are flexible remote days unless your team says otherwise.\n\n---\n\n[2] Remote and Hybrid Work Policy - Home office allowance (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Home office allowance\nAfter completing 90 days with the company, you can claim a one-time home office allowance of Rs 15,000 for a chair, desk or monitor. Submit it through ExpenseDesk with receipts.\n\n---\n\n[3] Remote and Hybrid Work Policy - Core hours (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Core hours\nEveryone should be reachable between 11:00 and 16:00 IST on working days, even on remote days.\n\n---\n\n[4] Password and Device Security Policy - Security training (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Security training\nAll new employees must complete the security awareness training within 7 days of joining.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "office attendance days expected in the office policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F12",
+        "category": "fact",
+        "question": "What are the core working hours?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "11:00",
+            "11 am",
+            "11am",
+            "11 a.m"
+          ],
+          [
+            "16:00",
+            "4 pm",
+            "4pm",
+            "4:00 pm",
+            "4 p.m"
+          ]
+        ],
+        "expected_sources": [
+          "remote_work_policy.md"
+        ],
+        "reference": "Reachable between 11:00 and 16:00 IST."
+      },
+      "raw": {
+        "final": "Core working hours are 11:00 – 16:00 IST on all working days, even when you’re working remotely.  \n\nSources  \n[1] Remote and Hybrid Work Policy – Core hours (updated 2026‑02‑01)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Remote and Hybrid Work Policy - Core hours (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Core hours\nEveryone should be reachable between 11:00 and 16:00 IST on working days, even on remote days.\n\n---\n\n[2] Remote and Hybrid Work Policy - Hybrid schedule (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Hybrid schedule\nEmployees work from the office 3 days a week: Tuesday, Wednesday and Thursday. Mondays and Fridays are flexible remote days unless your team says otherwise.\n\n---\n\n[3] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[4] Password and Device Security Policy - Lost or stolen devices (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Lost or stolen devices\nReport a lost or stolen laptop or phone within 1 hour to security@acmedemo.example, and also tell your manager. Do not wait to look for it first.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "core working hours"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F13",
+        "category": "fact",
+        "question": "How many days a year can I work from a different city?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "15"
+          ]
+        ],
+        "expected_sources": [
+          "remote_work_policy.md"
+        ],
+        "reference": "Up to 15 days per calendar year with written manager approval."
+      },
+      "raw": {
+        "final": "You can work from a different city for **up to 15 days per calendar year**—but you’ll need your manager’s written approval first. If you’re traveling abroad, let the People Team know as it may have tax and legal implications.  \n\n**Sources**  \n[1] Remote and Hybrid Work Policy – Working from another city (updated 2026‑02‑01)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Remote and Hybrid Work Policy - Working from another city (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Working from another city\nYou may work from a different city or country for up to 15 days per calendar year with your manager's written approval. Working abroad may have tax and legal implications, so tell the People Team before you travel.\n\n---\n\n[2] Remote and Hybrid Work Policy - Hybrid schedule (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Hybrid schedule\nEmployees work from the office 3 days a week: Tuesday, Wednesday and Thursday. Mondays and Fridays are flexible remote days unless your team says otherwise.\n\n---\n\n[3] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[4] Leave and Holiday Policy - Public holidays (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Public holidays\nThe company observes 10 public holidays per year. The list for each year is published in PeopleHub in December of the previous year. If you work in a different city, the holiday list for your office applies.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "work from a different city days a year policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F14",
+        "category": "fact",
+        "question": "Which profile should I pick in the VPN client?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "acme-global"
+          ]
+        ],
+        "expected_sources": [
+          "vpn_setup_guide.md"
+        ],
+        "reference": "The Acme-Global profile."
+      },
+      "raw": {
+        "final": "For the VPN client, select the **“Acme‑Global”** profile and click **Connect**.  \nIf you haven’t been granted VPN access yet, you’ll need to raise an access request; IT typically approves it within one business day.  \n\nSources  \n[1] VPN Setup Guide – Setup steps (updated 2026‑03‑05)  \n[2] VPN Setup Guide – Getting access (updated 2026‑03‑05)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] VPN Setup Guide - Setup steps (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Setup steps\n1. Install the Acme Secure Connect client from the Self Service app on your company laptop.\n2. Sign in with your company email.\n3. Approve the sign-in on your authenticator app (multi-factor authentication is mandatory).\n4. Choose the \"Acme-Global\" profile and click Connect.\n\n---\n\n[2] VPN Setup Guide - Getting access (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Getting access\nVPN access is not enabled automatically. Raise an access request for VPN. IT approves it, usually within 1 business day.\n\n---\n\n[3] VPN Setup Guide - Troubleshooting (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Troubleshooting\nIf you cannot connect, restart the client and check that your authenticator app time is correct. Still stuck? Message #it-help on Slack or email it-help@acmedemo.example with a screenshot of the error.\n\n---\n\n[4] VPN Setup Guide - Rules (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Rules\n- Do not install the VPN client on personal devices.\n- Disconnect when you are not using internal tools.\n- Public Wi-Fi is allowed only when the VPN is connected.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "VPN client profile engineering onboarding"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F15",
+        "category": "fact",
+        "question": "What is the minimum password length?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "14"
+          ]
+        ],
+        "expected_sources": [
+          "password_and_device_security.md"
+        ],
+        "reference": "At least 14 characters."
+      },
+      "raw": {
+        "final": "The minimum password length is **14 characters**.  \n[1] Password and Device Security Policy – Passwords\n\n**Sources**  \n[1] Password and Device Security Policy – Passwords (updated 2026-01-30)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Password and Device Security Policy - Passwords (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Passwords\n- Use the 1Password manager for every work account. Do not store passwords in notes, spreadsheets, or chat.\n- Passwords must be at least 14 characters. Let 1Password generate them.\n- Multi-factor authentication is mandatory for all company accounts.\n\n---\n\n[2] Password and Device Security Policy - Security training (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Security training\nAll new employees must complete the security awareness training within 7 days of joining.\n\n---\n\n[3] Password and Device Security Policy - Laptops and devices (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Laptops and devices\n- Disk encryption must stay on. It is enabled by IT on your laptop.\n- Screens must lock automatically after 5 minutes of inactivity.\n- Do not plug in personal USB drives. Use approved cloud storage to move files.\n- Install operating system updates within 7 days of release.\n\n---\n\n[4] Tool Access Matrix - Provisioned automatically on day 1 (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Provisioned automatically on day 1\nCompany email, Slack, Google Workspace, and the 1Password password manager. You do not need to request these.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "minimum password length"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F16",
+        "category": "fact",
+        "question": "After how long does my screen lock automatically?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "5 minutes",
+            "five minutes",
+            "5 min"
+          ]
+        ],
+        "expected_sources": [
+          "password_and_device_security.md"
+        ],
+        "reference": "After 5 minutes of inactivity."
+      },
+      "raw": {
+        "final": "Your screen will lock automatically after **5 minutes** of inactivity.  \n\nSources  \n[1] Password and Device Security Policy – Laptops and devices (updated 2026‑01‑30)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Password and Device Security Policy - Laptops and devices (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Laptops and devices\n- Disk encryption must stay on. It is enabled by IT on your laptop.\n- Screens must lock automatically after 5 minutes of inactivity.\n- Do not plug in personal USB drives. Use approved cloud storage to move files.\n- Install operating system updates within 7 days of release.\n\n---\n\n[2] Password and Device Security Policy - Lost or stolen devices (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Lost or stolen devices\nReport a lost or stolen laptop or phone within 1 hour to security@acmedemo.example, and also tell your manager. Do not wait to look for it first.\n\n---\n\n[3] Password and Device Security Policy - Security training (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Security training\nAll new employees must complete the security awareness training within 7 days of joining.\n\n---\n\n[4] First Week Checklist - By the end of week 1 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By the end of week 1\n- Complete the security awareness training (due within 7 days of joining).\n- Hold a first one-to-one with your manager to agree your 30-60-90 day goals.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "screen lock automatically after how long"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F17",
+        "category": "fact",
+        "question": "How quickly do I need to report a lost laptop?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "1 hour",
+            "one hour",
+            "within an hour"
+          ]
+        ],
+        "expected_sources": [
+          "password_and_device_security.md"
+        ],
+        "reference": "Within 1 hour, to security@acmedemo.example."
+      },
+      "raw": {
+        "final": "Report a lost or stolen laptop **within 1 hour** of noticing it.  \nSend an email to security@acmedemo.example and let your manager know right away. [1]\n\n**Sources**  \n[1] Password and Device Security Policy – Lost or stolen devices (updated 2026‑01‑30)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Password and Device Security Policy - Lost or stolen devices (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Lost or stolen devices\nReport a lost or stolen laptop or phone within 1 hour to security@acmedemo.example, and also tell your manager. Do not wait to look for it first.\n\n---\n\n[2] Password and Device Security Policy - Laptops and devices (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Laptops and devices\n- Disk encryption must stay on. It is enabled by IT on your laptop.\n- Screens must lock automatically after 5 minutes of inactivity.\n- Do not plug in personal USB drives. Use approved cloud storage to move files.\n- Install operating system updates within 7 days of release.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - Expense Reimbursement Policy (2023 version) (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version)\nThis is the older version of the expense policy. It has been replaced, but this copy was never removed from the shared drive.\n\n---\n\n[4] Who To Contact For What - Who To Contact For What (file: who_to_contact.md, last updated: 2026-03-01)\nWho To Contact For What\n| Topic | Contact |\n|---|---|\n| Leave, benefits, policies, HR paperwork | people@acmedemo.example or #ask-hr |\n| Laptop, VPN, accounts, tool access | it-help@acmedemo.example or #it-help |\n| Payroll and salary credit date | payroll@acmedemo.example |\n| Expense claims | finance@acmedemo.example |\n| Lost device, phishing, security incident | security@acmedemo.example |\n| Harassment, discrimination or ethics concerns | ethics@acmedemo.example (confidential) |  \nSensitive matters such as pay discussions, visas, medical situations, or complaints should go to the People Team directly and not through chat tools.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "report lost laptop policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F18",
+        "category": "fact",
+        "question": "How long do I have to finish the security awareness training?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "7 days",
+            "seven days",
+            "one week",
+            "7 day"
+          ]
+        ],
+        "expected_sources": [
+          "password_and_device_security.md"
+        ],
+        "reference": "Within 7 days of joining."
+      },
+      "raw": {
+        "final": "You need to finish the security awareness training within **7 days of your start date**.  \n\nSources  \n[1] Password and Device Security Policy – Security training (updated 2026‑01‑30)  \n[2] First Week Checklist – By the end of week 1 (updated 2026‑02‑25)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Password and Device Security Policy - Security training (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Security training\nAll new employees must complete the security awareness training within 7 days of joining.\n\n---\n\n[2] First Week Checklist - By the end of week 1 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By the end of week 1\n- Complete the security awareness training (due within 7 days of joining).\n- Hold a first one-to-one with your manager to agree your 30-60-90 day goals.\n\n---\n\n[3] Benefits Enrollment Guide - Enrollment deadline (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > Enrollment deadline\nYou must enroll in BenefitsHub within 30 days of your joining date. If you miss the deadline, you can only enroll during the annual window in November, so do not delay.\n\n---\n\n[4] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "security awareness training deadline"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F19",
+        "category": "fact",
+        "question": "How much health insurance cover do I get?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "5 lakh",
+            "500000",
+            "5 lac"
+          ]
+        ],
+        "expected_sources": [
+          "benefits_enrollment.md"
+        ],
+        "reference": "Rs 5 lakh group health cover."
+      },
+      "raw": {
+        "final": "The group health insurance plan covers you for **Rs 5 lakh**. This includes coverage for you, a spouse or partner, and up to two children.  \n\nSources  \n[1] Benefits Enrollment Guide – Health insurance (updated 2026‑03‑12)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Benefits Enrollment Guide - Health insurance (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > Health insurance\nEvery employee is covered by the group health insurance plan with a cover of Rs 5 lakh. The plan covers the employee, a spouse or partner, and up to 2 children.\n\n---\n\n[2] First Week Checklist - By day 30 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By day 30\n- Enroll in health insurance in BenefitsHub.\n- Submit any first expense claims.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - Limits (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > Limits\n- Meals while travelling on business: up to Rs 600 per meal.\n- Receipts are required for any single expense above Rs 1,000.\n\n---\n\n[4] Expense Reimbursement Policy - Limits (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Limits\n- Meals while travelling on business: up to Rs 800 per meal.\n- Receipts are required for any single expense above Rs 500.\n- Any single expense above Rs 10,000 needs prior written approval from your manager.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "health insurance cover amount"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F20",
+        "category": "fact",
+        "question": "By when do I have to enroll in health insurance?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "30 days",
+            "thirty days"
+          ]
+        ],
+        "expected_sources": [
+          "benefits_enrollment.md"
+        ],
+        "reference": "Within 30 days of joining."
+      },
+      "raw": {
+        "final": "You must enroll in health insurance within **30 days of your joining date**. If you miss that window, you can only enroll during the annual open‑enrollment period in November.  \n\nSources  \n[1] Benefits Enrollment Guide – Enrollment deadline (updated 2026‑03‑12)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Benefits Enrollment Guide - Enrollment deadline (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > Enrollment deadline\nYou must enroll in BenefitsHub within 30 days of your joining date. If you miss the deadline, you can only enroll during the annual window in November, so do not delay.\n\n---\n\n[2] First Week Checklist - By day 30 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By day 30\n- Enroll in health insurance in BenefitsHub.\n- Submit any first expense claims.\n\n---\n\n[3] Benefits Enrollment Guide - How to enroll (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > How to enroll\n1. Log in to BenefitsHub with your company email.\n2. Choose Health Insurance and add your dependents.\n3. Upload the required documents: ID proof for each dependent and a marriage certificate or birth certificates where relevant.\n4. Submit. You receive a confirmation email within 3 working days.\n\n---\n\n[4] Benefits Enrollment Guide - Health insurance (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > Health insurance\nEvery employee is covered by the group health insurance plan with a cover of Rs 5 lakh. The plan covers the employee, a spouse or partner, and up to 2 children.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "enroll in health insurance deadline"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F21",
+        "category": "fact",
+        "question": "What happens if I miss the insurance enrollment deadline?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "november"
+          ]
+        ],
+        "expected_sources": [
+          "benefits_enrollment.md"
+        ],
+        "reference": "You can only enroll in the annual window in November."
+      },
+      "raw": {
+        "final": "If you miss the 30‑day enrollment window after your start date, you’ll have to wait until the next annual enrollment period in November to sign up for health insurance.  \n\nSources  \n[1] Benefits Enrollment Guide – Enrollment deadline (updated 2026‑03‑12)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Benefits Enrollment Guide - Enrollment deadline (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > Enrollment deadline\nYou must enroll in BenefitsHub within 30 days of your joining date. If you miss the deadline, you can only enroll during the annual window in November, so do not delay.\n\n---\n\n[2] First Week Checklist - By day 30 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By day 30\n- Enroll in health insurance in BenefitsHub.\n- Submit any first expense claims.\n\n---\n\n[3] Benefits Enrollment Guide - How to enroll (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > How to enroll\n1. Log in to BenefitsHub with your company email.\n2. Choose Health Insurance and add your dependents.\n3. Upload the required documents: ID proof for each dependent and a marriage certificate or birth certificates where relevant.\n4. Submit. You receive a confirmation email within 3 working days.\n\n---\n\n[4] Expense Reimbursement Policy (2023 version) - How to submit (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > How to submit\nSubmit claims by email to finance@acmedemo.example within 45 days of the expense date.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "miss insurance enrollment deadline"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F22",
+        "category": "fact",
+        "question": "How long is the probation period?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "6 months",
+            "six months"
+          ]
+        ],
+        "expected_sources": [
+          "probation_and_reviews.md"
+        ],
+        "reference": "6 months."
+      },
+      "raw": {
+        "final": "The probation period for new employees is **6 months**. During this time, leave accrues normally and the notice period is 15 days on either side.  \n\nSources  \n[1] Probation and Performance Reviews – Probation (updated 2026-01-20)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.\n\n---\n\n[2] Probation and Performance Reviews - After probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > After probation\nThe notice period becomes 60 days. Performance reviews run twice a year, in June and December, and use the goals agreed with your manager.\n\n---\n\n[3] Probation and Performance Reviews - Check-ins (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Check-ins\nYour manager holds formal check-ins at 3 months and at 6 months. At the 6-month check-in you receive a written confirmation letter if you are confirmed.\n\n---\n\n[4] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "probation period length"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F23",
+        "category": "fact",
+        "question": "What is the notice period during probation?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "15"
+          ]
+        ],
+        "expected_sources": [
+          "probation_and_reviews.md"
+        ],
+        "reference": "15 days on either side."
+      },
+      "raw": {
+        "final": "The notice period during probation is **15 days** on either side.  \n\nSources  \n[1] Probation and Performance Reviews – Probation (updated 2026-01-20)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.\n\n---\n\n[2] Probation and Performance Reviews - After probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > After probation\nThe notice period becomes 60 days. Performance reviews run twice a year, in June and December, and use the goals agreed with your manager.\n\n---\n\n[3] Probation and Performance Reviews - Check-ins (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Check-ins\nYour manager holds formal check-ins at 3 months and at 6 months. At the 6-month check-in you receive a written confirmation letter if you are confirmed.\n\n---\n\n[4] First Week Checklist - By the end of week 1 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By the end of week 1\n- Complete the security awareness training (due within 7 days of joining).\n- Hold a first one-to-one with your manager to agree your 30-60-90 day goals.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "notice period during probation"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F24",
+        "category": "fact",
+        "question": "Who do I contact about payroll?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "payroll@acmedemo.example"
+          ]
+        ],
+        "expected_sources": [
+          "who_to_contact.md"
+        ],
+        "reference": "payroll@acmedemo.example"
+      },
+      "raw": {
+        "final": "Payroll questions should be directed to the payroll team: payroll@acmedemo.example.  \n\nSources  \n[1] Who To Contact For What – Payroll and salary credit date (updated 2026-03-01)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Who To Contact For What - Who To Contact For What (file: who_to_contact.md, last updated: 2026-03-01)\nWho To Contact For What\n| Topic | Contact |\n|---|---|\n| Leave, benefits, policies, HR paperwork | people@acmedemo.example or #ask-hr |\n| Laptop, VPN, accounts, tool access | it-help@acmedemo.example or #it-help |\n| Payroll and salary credit date | payroll@acmedemo.example |\n| Expense claims | finance@acmedemo.example |\n| Lost device, phishing, security incident | security@acmedemo.example |\n| Harassment, discrimination or ethics concerns | ethics@acmedemo.example (confidential) |  \nSensitive matters such as pay discussions, visas, medical situations, or complaints should go to the People Team directly and not through chat tools.\n\n---\n\n[2] Benefits Enrollment Guide - Questions (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > Questions\nFor benefit questions, message #ask-hr or email people@acmedemo.example. For claim issues, contact the insurance helpdesk number printed on your insurance card.\n\n---\n\n[3] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.\n\n---\n\n[4] First Week Checklist - Days 2 to 3 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Days 2 to 3\n- Complete HR paperwork in PeopleHub within 3 working days.\n- Raise access requests for the tools you need (see the Tool Access Matrix).",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "payroll contact"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F25",
+        "category": "fact",
+        "question": "What is VPN access and do I get it automatically?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "not"
+          ],
+          [
+            "request"
+          ]
+        ],
+        "expected_sources": [
+          "vpn_setup_guide.md"
+        ],
+        "reference": "VPN access is not enabled automatically; raise an access request and IT approves it."
+      },
+      "raw": {
+        "final": "VPN access lets you securely connect to Acme’s internal network from outside the office, giving you access to tools like the staging environment, internal wiki, and finance systems.  \n\n- VPN is **not** enabled automatically.  \n- To get it, raise a VPN access request; IT usually approves it within one business day.  \n\n**Sources**  \n[1] VPN Setup Guide – Getting access (updated 2026‑03‑05)  \n[3] Tool Access Matrix – Provisioned automatically on day 1 (updated 2026‑02‑20)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] VPN Setup Guide - Getting access (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Getting access\nVPN access is not enabled automatically. Raise an access request for VPN. IT approves it, usually within 1 business day.\n\n---\n\n[2] VPN Setup Guide - Setup steps (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Setup steps\n1. Install the Acme Secure Connect client from the Self Service app on your company laptop.\n2. Sign in with your company email.\n3. Approve the sign-in on your authenticator app (multi-factor authentication is mandatory).\n4. Choose the \"Acme-Global\" profile and click Connect.\n\n---\n\n[3] Tool Access Matrix - Provisioned automatically on day 1 (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Provisioned automatically on day 1\nCompany email, Slack, Google Workspace, and the 1Password password manager. You do not need to request these.\n\n---\n\n[4] VPN Setup Guide - Who needs the VPN (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Who needs the VPN\nEveryone who works outside the office network needs the VPN to reach internal tools such as the staging environment, the internal wiki, and the finance systems. Cloud tools such as Slack and Google Workspace do not need it.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "VPN access automatically"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M01",
+        "category": "multi",
+        "question": "I'm an engineer starting next week. Which tools do I need to request, and who approves GitHub?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "github"
+          ],
+          [
+            "engineering manager"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md",
+          "first_week_checklist.md"
+        ],
+        "reference": "Engineers request GitHub, Jira and AWS (AWS only after security training); the Engineering manager approves GitHub."
+      },
+      "raw": {
+        "final": "**Tools you’ll need to request**\n\n1. **GitHub** – for code hosting and collaboration.  \n2. **Jira** – for issue tracking and project management.  \n3. **AWS Console** – for cloud resources (you’ll need to finish the security awareness training first).  \n\n**Who approves GitHub?**  \nThe **Engineering manager** is the approver for GitHub access.  \n\n---\n\n**Sources**  \n[1] Tool Access Matrix – Tools you must request (updated 2026‑02‑20)  \n[2] First Week Checklist – Role‑specific tools (updated 2026‑02‑25)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[2] First Week Checklist - Role-specific tools (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Role-specific tools\n- Engineering: GitHub, Jira, and AWS Console (AWS only after security training).\n- Sales: Salesforce.\n- Design: Figma and Jira.\n\n---\n\n[3] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.\n\n---\n\n[4] First Week Checklist - Day 1 (everyone) (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Day 1 (everyone)\n- Collect your laptop and sign in to company email.\n- Join Slack and introduce yourself in #new-joiners.\n- Set up 1Password and multi-factor authentication.\n- Meet your manager and your onboarding buddy.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "engineering onboarding tools required"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M02",
+        "category": "multi",
+        "question": "I'm joining the sales team. Which tool must I request and how long does it take?",
+        "role": "Sales",
+        "expected_facts": [
+          [
+            "salesforce"
+          ],
+          [
+            "2 business days",
+            "2 working days",
+            "two business days"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md"
+        ],
+        "reference": "Salesforce, about 2 business days, approved by the Sales manager."
+      },
+      "raw": {
+        "final": "For the sales team you’ll need to request **Salesforce**.  \nAccording to the Tool Access Matrix, the typical turnaround time for a Salesforce request is **2 business days**.\n\n1. Submit a request for Salesforce access.  \n2. The Sales manager will approve it, and you should receive access within 2 business days.\n\n**Sources**  \n[1] Tool Access Matrix – Salesforce: 2 business days  \n[2] First Week Checklist – Sales: Salesforce required  \n[3] Tool Access Matrix – Auto‑provisioned tools (email, Slack, etc.)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[2] First Week Checklist - Role-specific tools (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Role-specific tools\n- Engineering: GitHub, Jira, and AWS Console (AWS only after security training).\n- Sales: Salesforce.\n- Design: Figma and Jira.\n\n---\n\n[3] Tool Access Matrix - Provisioned automatically on day 1 (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Provisioned automatically on day 1\nCompany email, Slack, Google Workspace, and the 1Password password manager. You do not need to request these.\n\n---\n\n[4] Who To Contact For What - Who To Contact For What (file: who_to_contact.md, last updated: 2026-03-01)\nWho To Contact For What\n| Topic | Contact |\n|---|---|\n| Leave, benefits, policies, HR paperwork | people@acmedemo.example or #ask-hr |\n| Laptop, VPN, accounts, tool access | it-help@acmedemo.example or #it-help |\n| Payroll and salary credit date | payroll@acmedemo.example |\n| Expense claims | finance@acmedemo.example |\n| Lost device, phishing, security incident | security@acmedemo.example |\n| Harassment, discrimination or ethics concerns | ethics@acmedemo.example (confidential) |  \nSensitive matters such as pay discussions, visas, medical situations, or complaints should go to the People Team directly and not through chat tools.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "sales team tool request"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M03",
+        "category": "multi",
+        "question": "What do I need to finish before I can get AWS access?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "security"
+          ],
+          [
+            "training"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md",
+          "password_and_device_security.md"
+        ],
+        "reference": "The security awareness training must be completed first."
+      },
+      "raw": {
+        "final": "Before you can request AWS Console access, you must:\n\n1. Complete the **security awareness training**.  \n   - All new employees must finish this training within 7 days of joining.  \n   - AWS access is granted only after this training is completed.  \n\nOnce you’ve finished the training, you can submit a tool‑access request with a short business reason (e.g., the project you’ll work on).  \n\n**Sources**  \n[1] Tool Access Matrix – Rules (updated 2026‑02‑20)  \n[3] Password and Device Security Policy – Security training (updated 2026‑01‑30)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.\n\n---\n\n[2] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[3] Password and Device Security Policy - Security training (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Security training\nAll new employees must complete the security awareness training within 7 days of joining.\n\n---\n\n[4] First Week Checklist - Role-specific tools (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Role-specific tools\n- Engineering: GitHub, Jira, and AWS Console (AWS only after security training).\n- Sales: Salesforce.\n- Design: Figma and Jira.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "AWS access prerequisites for new employees"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M04",
+        "category": "multi",
+        "question": "Which internal tools need the VPN?",
+        "role": "Other",
+        "expected_facts": [
+          [
+            "staging"
+          ],
+          [
+            "wiki"
+          ]
+        ],
+        "expected_sources": [
+          "vpn_setup_guide.md"
+        ],
+        "reference": "Staging environment, internal wiki and finance systems; cloud tools like Slack do not need it."
+      },
+      "raw": {
+        "final": "The VPN is required for internal tools that are only reachable from the office network, such as:\n\n1. The staging environment  \n2. The internal wiki  \n3. Finance systems  \n\nThese are the primary internal tools that need VPN access.  \n\nSources  \n[1] VPN Setup Guide – Who needs the VPN (updated 2026‑03‑05)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] VPN Setup Guide - Who needs the VPN (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Who needs the VPN\nEveryone who works outside the office network needs the VPN to reach internal tools such as the staging environment, the internal wiki, and the finance systems. Cloud tools such as Slack and Google Workspace do not need it.\n\n---\n\n[2] VPN Setup Guide - Getting access (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Getting access\nVPN access is not enabled automatically. Raise an access request for VPN. IT approves it, usually within 1 business day.\n\n---\n\n[3] VPN Setup Guide - Rules (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Rules\n- Do not install the VPN client on personal devices.\n- Disconnect when you are not using internal tools.\n- Public Wi-Fi is allowed only when the VPN is connected.\n\n---\n\n[4] VPN Setup Guide - Setup steps (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Setup steps\n1. Install the Acme Secure Connect client from the Self Service app on your company laptop.\n2. Sign in with your company email.\n3. Approve the sign-in on your authenticator app (multi-factor authentication is mandatory).\n4. Choose the \"Acme-Global\" profile and click Connect.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "internal tools need the VPN"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M05",
+        "category": "multi",
+        "question": "I joined two weeks ago. What must I still do within my first 30 days?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "insurance"
+          ],
+          [
+            "expense"
+          ]
+        ],
+        "expected_sources": [
+          "first_week_checklist.md",
+          "benefits_enrollment.md"
+        ],
+        "reference": "Enroll in health insurance in BenefitsHub and submit any first expense claims."
+      },
+      "raw": {
+        "final": "**What you still need to complete in your first 30 days**\n\n1. **Enroll in health insurance** – Sign up in BenefitsHub and add any dependents.  \n2. **Submit any first expense claims** – Use the ExpenseDesk portal for any business expenses incurred.  \n3. **Keep track of deadlines** –  \n   * Benefits enrollment must be finished within 30 days of your start date.  \n   * Expense claims must be filed within 30 days of the expense date (otherwise they’ll be rejected unless Finance approves an exception).  \n\nIf you’re unsure how to do any of these steps, let me know and I can point you to the right guide or contact.\n\n**Sources**\n\n[1] First Week Checklist – By day 30 (updated 2026‑02‑25)  \n[2] Benefits Enrollment Guide – How to enroll (updated 2026‑03‑12)  \n[3] Benefits Enrollment Guide – Enrollment deadline (updated 2026‑03‑12)  \n[4] Expense Reimbursement Policy – How to submit (updated 2026‑02‑10)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] First Week Checklist - By day 30 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By day 30\n- Enroll in health insurance in BenefitsHub.\n- Submit any first expense claims.\n\n---\n\n[2] Benefits Enrollment Guide - How to enroll (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > How to enroll\n1. Log in to BenefitsHub with your company email.\n2. Choose Health Insurance and add your dependents.\n3. Upload the required documents: ID proof for each dependent and a marriage certificate or birth certificates where relevant.\n4. Submit. You receive a confirmation email within 3 working days.\n\n---\n\n[3] Benefits Enrollment Guide - Enrollment deadline (file: benefits_enrollment.md, last updated: 2026-03-12)\nBenefits Enrollment Guide > Enrollment deadline\nYou must enroll in BenefitsHub within 30 days of your joining date. If you miss the deadline, you can only enroll during the annual window in November, so do not delay.\n\n---\n\n[4] Expense Reimbursement Policy - How to submit (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > How to submit\nSubmit claims in the ExpenseDesk portal within 30 days of the expense date. Claims submitted after 30 days are rejected unless Finance approves an exception.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "first 30 days onboarding tasks engineering new employee"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M06",
+        "category": "multi",
+        "question": "While I'm on probation, do I still earn leave, and how much notice do I owe?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "accrue",
+            "earn",
+            "normal"
+          ],
+          [
+            "15"
+          ]
+        ],
+        "expected_sources": [
+          "probation_and_reviews.md"
+        ],
+        "reference": "Leave accrues as normal; notice during probation is 15 days."
+      },
+      "raw": {
+        "final": "Yes—while you’re on the 6‑month probation period you still accrue leave as normal.  \nThe notice period during probation is **15 days** on either side (you or the company).\n\n**Sources**  \n[1] Probation and Performance Reviews – Probation (updated 2026‑01‑20)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.\n\n---\n\n[2] Probation and Performance Reviews - After probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > After probation\nThe notice period becomes 60 days. Performance reviews run twice a year, in June and December, and use the goals agreed with your manager.\n\n---\n\n[3] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[4] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "probation leave earn notice period"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M07",
+        "category": "multi",
+        "question": "I'm in the design team. Which tools can I request and who approves Figma?",
+        "role": "Design",
+        "expected_facts": [
+          [
+            "figma"
+          ],
+          [
+            "jira"
+          ],
+          [
+            "design lead"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md"
+        ],
+        "reference": "Figma and Jira; the Design lead approves Figma."
+      },
+      "raw": {
+        "final": "You can request the following tools as a Design team member:\n\n1. **Jira** – for project tracking and issue management.  \n2. **Figma** – for design collaboration and prototyping.\n\n**Who approves Figma requests?**  \nThe **Design lead** is the designated approver for Figma access.  \n\nThese details come from the Tool Access Matrix.  \n\nSources  \n[1] Tool Access Matrix – Tools you must request (updated 2026‑02‑20)  \n[2] Tool Access Matrix – Rules (updated 2026‑02‑20)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[2] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.\n\n---\n\n[3] First Week Checklist - Role-specific tools (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Role-specific tools\n- Engineering: GitHub, Jira, and AWS Console (AWS only after security training).\n- Sales: Salesforce.\n- Design: Figma and Jira.\n\n---\n\n[4] Tool Access Matrix - Provisioned automatically on day 1 (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Provisioned automatically on day 1\nCompany email, Slack, Google Workspace, and the 1Password password manager. You do not need to request these.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "tool access request design team Figma approval"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "C01",
+        "category": "conflict",
+        "question": "What is the meal limit when I travel for work?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "800"
+          ]
+        ],
+        "stale_values": [
+          "600"
+        ],
+        "expected_sources": [
+          "expense_reimbursement.md"
+        ],
+        "reference": "Rs 800 per meal (the 2023 policy said Rs 600 and is outdated)."
+      },
+      "raw": {
+        "final": "The current meal limit for business travel is **Rs 800 per meal**.  \nReceipts are required for any single expense above Rs 500, and expenses over Rs 10,000 need prior written approval from your manager.  \n\nSources  \n[2] Expense Reimbursement Policy – Limits (updated 2026‑02‑10)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Expense Reimbursement Policy (2023 version) - Limits (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > Limits\n- Meals while travelling on business: up to Rs 600 per meal.\n- Receipts are required for any single expense above Rs 1,000.\n\n---\n\n[2] Expense Reimbursement Policy - Limits (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Limits\n- Meals while travelling on business: up to Rs 800 per meal.\n- Receipts are required for any single expense above Rs 500.\n- Any single expense above Rs 10,000 needs prior written approval from your manager.\n\n---\n\n[3] Remote and Hybrid Work Policy - Working from another city (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Working from another city\nYou may work from a different city or country for up to 15 days per calendar year with your manager's written approval. Working abroad may have tax and legal implications, so tell the People Team before you travel.\n\n---\n\n[4] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "meal limit travel work"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true,
+          "stale_handled": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "C02",
+        "category": "conflict",
+        "question": "How many days do I have to submit an expense claim?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "30"
+          ]
+        ],
+        "stale_values": [
+          "45"
+        ],
+        "expected_sources": [
+          "expense_reimbursement.md"
+        ],
+        "reference": "30 days (the 2023 policy said 45 and is outdated)."
+      },
+      "raw": {
+        "final": "You have **30 days** from the date of the expense to submit a claim in the ExpenseDesk portal. Claims submitted after 30 days will be rejected unless Finance approves an exception.  \n\nThe older 2023 policy mentioned 45 days, but that version is now outdated.  \n\n**Sources**  \n[1] Expense Reimbursement Policy – How to submit (updated 2026-02-10)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Expense Reimbursement Policy - How to submit (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > How to submit\nSubmit claims in the ExpenseDesk portal within 30 days of the expense date. Claims submitted after 30 days are rejected unless Finance approves an exception.\n\n---\n\n[2] Expense Reimbursement Policy (2023 version) - How to submit (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > How to submit\nSubmit claims by email to finance@acmedemo.example within 45 days of the expense date.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - Payment (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > Payment\nApproved claims are paid within 15 working days of approval.\n\n---\n\n[4] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "expense claim deadline days submit expense claim days"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true,
+          "stale_handled": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "C03",
+        "category": "conflict",
+        "question": "Above what amount do I need a receipt for an expense?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "500"
+          ]
+        ],
+        "stale_values": [
+          "1000"
+        ],
+        "expected_sources": [
+          "expense_reimbursement.md"
+        ],
+        "reference": "Receipts are required above Rs 500 (old policy: Rs 1,000)."
+      },
+      "raw": {
+        "final": "You need a receipt for any single expense that exceeds **Rs 500**.  \n\nSources  \n[1] Expense Reimbursement Policy – Limits (updated 2026‑02‑10)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Expense Reimbursement Policy - Limits (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Limits\n- Meals while travelling on business: up to Rs 800 per meal.\n- Receipts are required for any single expense above Rs 500.\n- Any single expense above Rs 10,000 needs prior written approval from your manager.\n\n---\n\n[2] Expense Reimbursement Policy (2023 version) - Limits (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > Limits\n- Meals while travelling on business: up to Rs 600 per meal.\n- Receipts are required for any single expense above Rs 1,000.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - How to submit (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > How to submit\nSubmit claims by email to finance@acmedemo.example within 45 days of the expense date.\n\n---\n\n[4] Expense Reimbursement Policy (2023 version) - Expense Reimbursement Policy (2023 version) (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version)\nThis is the older version of the expense policy. It has been replaced, but this copy was never removed from the shared drive.",
+        "escalated": false,
+        "pending": null,
+        "error": null,
+        "search_queries": [
+          "receipt amount expense policy"
+        ]
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true,
+          "stale_handled": true
+        },
+        "reasons": []
+      }
+    }
+  ]
+}

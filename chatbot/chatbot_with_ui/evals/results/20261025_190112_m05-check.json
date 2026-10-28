@@ -1,0 +1,335 @@
+{
+  "label": "m05-check",
+  "config": {
+    "llm": "openai/gpt-oss-120b",
+    "temperature": 0.1,
+    "embedding_model": "BAAI/bge-m3",
+    "chunk_size": 900,
+    "chunk_overlap": 120,
+    "top_k": 4,
+    "min_relevance": 0.35,
+    "stale_after_days": 365
+  },
+  "summary": {
+    "overall": {
+      "n": 7,
+      "passed": 6,
+      "pct": 85.7
+    },
+    "by_category": {
+      "multi": {
+        "n": 7,
+        "passed": 6,
+        "pct": 85.7
+      }
+    },
+    "secondary": {
+      "retrieval_hit_rate": {
+        "pct": 85.7,
+        "n": 7
+      },
+      "citation_rate": {
+        "pct": 100.0,
+        "n": 7
+      },
+      "false_escalation_rate": {
+        "pct": 0.0,
+        "n": 7
+      }
+    }
+  },
+  "results": [
+    {
+      "case": {
+        "id": "M01",
+        "category": "multi",
+        "question": "I'm an engineer starting next week. Which tools do I need to request, and who approves GitHub?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "github"
+          ],
+          [
+            "engineering manager"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md",
+          "first_week_checklist.md"
+        ],
+        "reference": "Engineers request GitHub, Jira and AWS (AWS only after security training); the Engineering manager approves GitHub."
+      },
+      "raw": {
+        "final": "Here are the tools you’ll need to request as an Engineer and who approves the GitHub request:\n\n1. **GitHub** – request it; approved by your **Engineering manager**【1†L1-L3】.  \n2. **AWS Console** – request it (after completing security awareness training); approved by your **Engineering manager and the Security team**【1†L2-L3】.  \n3. **Jira** – request it; approved by your **Team lead** (often the Engineering manager)【1†L3-L4】.  \n4. **VPN** – request it; approved by the **IT Team**【1†L5-L6】.  \n\n*Automatically provisioned on day 1 (no request needed):* company email, Slack, Google Workspace, and 1Password【4†L1-L3】.  \n\n**Sources**  \n[1] Tool Access Matrix – Tools you must request (updated 2026-02-20)  \n[4] Tool Access Matrix – Provisioned automatically on day 1 (updated 2026-02-20)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[2] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.\n\n---\n\n[3] First Week Checklist - Role-specific tools (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Role-specific tools\n- Engineering: GitHub, Jira, and AWS Console (AWS only after security training).\n- Sales: Salesforce.\n- Design: Figma and Jira.\n\n---\n\n[4] Tool Access Matrix - Provisioned automatically on day 1 (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Provisioned automatically on day 1\nCompany email, Slack, Google Workspace, and the 1Password password manager. You do not need to request these.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M02",
+        "category": "multi",
+        "question": "I'm joining the sales team. Which tool must I request and how long does it take?",
+        "role": "Sales",
+        "expected_facts": [
+          [
+            "salesforce"
+          ],
+          [
+            "2 business days",
+            "2 working days",
+            "two business days"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md"
+        ],
+        "reference": "Salesforce, about 2 business days, approved by the Sales manager."
+      },
+      "raw": {
+        "final": "Here’s the tool you’ll need to request as a new Sales team member:\n\n| Tool | Who can request | Approver | Typical turnaround |\n|------|----------------|----------|--------------------|\n| **Salesforce** | Sales | Sales manager | **2 business days**【1†L1-L4】  \n\n**What to do**\n\n1. Prepare a short business justification (e.g., “Access needed to manage customer accounts and track opportunities for Q4 sales pipeline”).  \n2. Let me know the justification, and I’ll submit the request for you.  \n\n*If you also need VPN access (required for remote work), the typical turnaround is 1 business day【1†L5-L6】.*  \n\nFeel free to share the justification whenever you’re ready!  \n\n**Sources**  \n[1] Tool Access Matrix – Tools you must request (updated 2026-02-20)  ",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[2] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.\n\n---\n\n[3] Tool Access Matrix - Provisioned automatically on day 1 (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Provisioned automatically on day 1\nCompany email, Slack, Google Workspace, and the 1Password password manager. You do not need to request these.\n\n---\n\n[4] First Week Checklist - Days 2 to 3 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Days 2 to 3\n- Complete HR paperwork in PeopleHub within 3 working days.\n- Raise access requests for the tools you need (see the Tool Access Matrix).",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M03",
+        "category": "multi",
+        "question": "What do I need to finish before I can get AWS access?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "security"
+          ],
+          [
+            "training"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md",
+          "password_and_device_security.md"
+        ],
+        "reference": "The security awareness training must be completed first."
+      },
+      "raw": {
+        "final": "Before you can be granted AWS Console access you need to finish the **Security Awareness Training** first. After that you can submit a request with a short business justification (e.g., the project you’ll work on) and have your manager (and the Security team) approve it.\n\n**Steps**\n\n1. Complete the Security Awareness Training (required within 7 days of your start date)【4】.  \n2. Prepare a brief justification for why you need AWS (project name, scope, etc.)【1】.  \n3. Ask your Engineering manager to raise the AWS access request (or submit it yourself with the justification)【1】【3】.\n\n**Sources**  \n[1] Tool Access Matrix – Rules (2026‑02‑20)  \n[3] Tool Access Matrix – Tools you must request (2026‑02‑20)  \n[4] Password and Device Security Policy – Security training (2026‑01‑30)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.\n\n---\n\n[2] First Week Checklist - Role-specific tools (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Role-specific tools\n- Engineering: GitHub, Jira, and AWS Console (AWS only after security training).\n- Sales: Salesforce.\n- Design: Figma and Jira.\n\n---\n\n[3] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[4] Password and Device Security Policy - Security training (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Security training\nAll new employees must complete the security awareness training within 7 days of joining.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M04",
+        "category": "multi",
+        "question": "Which internal tools need the VPN?",
+        "role": "Other",
+        "expected_facts": [
+          [
+            "staging"
+          ],
+          [
+            "wiki"
+          ]
+        ],
+        "expected_sources": [
+          "vpn_setup_guide.md"
+        ],
+        "reference": "Staging environment, internal wiki and finance systems; cloud tools like Slack do not need it."
+      },
+      "raw": {
+        "final": "The VPN is required to access internal‑only tools, for example:\n\n1. The **staging environment**  \n2. The **internal wiki**  \n3. The **finance systems**  \n\n(Cloud services such as Slack and Google Workspace are accessible without the VPN.)  \n\n**Sources**  \n[1] VPN Setup Guide – Who needs the VPN (updated 2026‑03‑05)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] VPN Setup Guide - Who needs the VPN (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Who needs the VPN\nEveryone who works outside the office network needs the VPN to reach internal tools such as the staging environment, the internal wiki, and the finance systems. Cloud tools such as Slack and Google Workspace do not need it.\n\n---\n\n[2] VPN Setup Guide - Rules (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Rules\n- Do not install the VPN client on personal devices.\n- Disconnect when you are not using internal tools.\n- Public Wi-Fi is allowed only when the VPN is connected.\n\n---\n\n[3] VPN Setup Guide - Getting access (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Getting access\nVPN access is not enabled automatically. Raise an access request for VPN. IT approves it, usually within 1 business day.\n\n---\n\n[4] VPN Setup Guide - Setup steps (file: vpn_setup_guide.md, last updated: 2026-03-05)\nVPN Setup Guide > Setup steps\n1. Install the Acme Secure Connect client from the Self Service app on your company laptop.\n2. Sign in with your company email.\n3. Approve the sign-in on your authenticator app (multi-factor authentication is mandatory).\n4. Choose the \"Acme-Global\" profile and click Connect.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M05",
+        "category": "multi",
+        "question": "I joined two weeks ago. What must I still do within my first 30 days?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "insurance"
+          ],
+          [
+            "expense"
+          ]
+        ],
+        "expected_sources": [
+          "first_week_checklist.md",
+          "benefits_enrollment.md"
+        ],
+        "reference": "Enroll in health insurance in BenefitsHub and submit any first expense claims."
+      },
+      "raw": {
+        "final": "Here’s a quick checklist of what still needs to be done before you hit the 30‑day mark:\n\n1. **Finish any outstanding HR paperwork** in PeopleHub (must be done within the first 3 working days)【3】.  \n2. **Complete the Security Awareness Training** (required within 7 days of your start date)【2†L1-L2】【4】.  \n3. **Raise any remaining access requests** for the tools you need (GitHub, AWS, Jira, etc.) via the Tool Access Matrix【3】.  \n4. **Schedule a follow‑up one‑to‑one with your manager** (if you haven’t already) to confirm your 30‑60‑90‑day goals【2†L2-L3】.  \n5. **Verify you’ve set up 1Password and enabled MFA** on all devices (Day 1 task)【1†L3-L4】.  \n\nIf any of these items are already completed, you’re on track! Otherwise, aim to finish them this week.\n\n**Sources**  \n[1] First Week Checklist – Day 1 (updated 2026‑02‑25)  \n[2] First Week Checklist – By the end of week 1 (updated 2026‑02‑25)  \n[3] First Week Checklist – Days 2‑3 (updated 2026‑02‑25)  \n[4] Password and Device Security Policy – Security training (updated 2026‑01‑30)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] First Week Checklist - Day 1 (everyone) (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Day 1 (everyone)\n- Collect your laptop and sign in to company email.\n- Join Slack and introduce yourself in #new-joiners.\n- Set up 1Password and multi-factor authentication.\n- Meet your manager and your onboarding buddy.\n\n---\n\n[2] First Week Checklist - By the end of week 1 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > By the end of week 1\n- Complete the security awareness training (due within 7 days of joining).\n- Hold a first one-to-one with your manager to agree your 30-60-90 day goals.\n\n---\n\n[3] First Week Checklist - Days 2 to 3 (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Days 2 to 3\n- Complete HR paperwork in PeopleHub within 3 working days.\n- Raise access requests for the tools you need (see the Tool Access Matrix).\n\n---\n\n[4] Password and Device Security Policy - Security training (file: password_and_device_security.md, last updated: 2026-01-30)\nPassword and Device Security Policy > Security training\nAll new employees must complete the security awareness training within 7 days of joining.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": false,
+        "checks": {
+          "facts_present": false,
+          "not_escalated": true,
+          "retrieval_hit": false,
+          "cited": true
+        },
+        "reasons": [
+          "failed: facts_present"
+        ]
+      }
+    },
+    {
+      "case": {
+        "id": "M06",
+        "category": "multi",
+        "question": "While I'm on probation, do I still earn leave, and how much notice do I owe?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "accrue",
+            "earn",
+            "normal"
+          ],
+          [
+            "15"
+          ]
+        ],
+        "expected_sources": [
+          "probation_and_reviews.md"
+        ],
+        "reference": "Leave accrues as normal; notice during probation is 15 days."
+      },
+      "raw": {
+        "final": "- Yes, you continue to accrue leave at the normal rate while you’re on probation.  \n- The notice period you must give (and that the company must give you) during probation is **15 days** on either side.  \n\n**Sources**  \n[1] Probation and Performance Reviews – Probation (updated 2026‑01‑20)   – Leave accrues as normal; notice period 15 days.",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.\n\n---\n\n[2] Probation and Performance Reviews - After probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > After probation\nThe notice period becomes 60 days. Performance reviews run twice a year, in June and December, and use the goals agreed with your manager.\n\n---\n\n[3] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[4] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "M07",
+        "category": "multi",
+        "question": "I'm in the design team. Which tools can I request and who approves Figma?",
+        "role": "Design",
+        "expected_facts": [
+          [
+            "figma"
+          ],
+          [
+            "jira"
+          ],
+          [
+            "design lead"
+          ]
+        ],
+        "expected_sources": [
+          "tool_access_matrix.md"
+        ],
+        "reference": "Figma and Jira; the Design lead approves Figma."
+      },
+      "raw": {
+        "final": "Here’s what you can request as a Designer:\n\n| Tool | Who can request | Approver |\n|------|----------------|----------|\n| **Figma** | Design (and Engineering) | **Design lead** |\n| **Jira** | Design (and Engineering) | Team lead (your design lead) |\n\nThese are listed in the Tool Access Matrix [1] and confirmed in the First‑Week Checklist for Design [2].\n\n**Sources**  \n[1] Tool Access Matrix – Tools you must request (updated 2026‑02‑20)  \n[2] First Week Checklist – Role‑specific tools (updated 2026‑02‑25)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Tool Access Matrix - Tools you must request (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Tools you must request\n| Tool | Who can request | Approver | Typical turnaround |\n|---|---|---|---|\n| GitHub | Engineering | Engineering manager | 1 business day |\n| AWS Console | Engineering | Engineering manager and Security team | 3 business days |\n| Jira | Engineering, Design | Team lead | 1 business day |\n| Figma | Design, Engineering | Design lead | 1 business day |\n| Salesforce | Sales | Sales manager | 2 business days |\n| VPN | All employees | IT Team | 1 business day |\n\n---\n\n[2] First Week Checklist - Role-specific tools (file: first_week_checklist.md, last updated: 2026-02-25)\nFirst Week Checklist > Role-specific tools\n- Engineering: GitHub, Jira, and AWS Console (AWS only after security training).\n- Sales: Salesforce.\n- Design: Figma and Jira.\n\n---\n\n[3] Tool Access Matrix - Rules (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Rules\n- AWS Console access requires that you have completed the security awareness training first.\n- Access is granted by the approver, not by the person who raises the request.\n- Requests need a short business reason, for example the project you will work on.\n- If your role is not listed for a tool, ask your manager to raise the request for you.\n\n---\n\n[4] Tool Access Matrix - Provisioned automatically on day 1 (file: tool_access_matrix.md, last updated: 2026-02-20)\nTool Access Matrix > Provisioned automatically on day 1\nCompany email, Slack, Google Workspace, and the 1Password password manager. You do not need to request these.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    }
+  ]
+}

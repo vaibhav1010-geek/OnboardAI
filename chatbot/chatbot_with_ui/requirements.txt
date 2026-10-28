@@ -1,0 +1,14 @@
+streamlit
+python-dotenv
+requests
+langgraph>=0.4
+langgraph-checkpoint-sqlite
+langchain-core
+langchain-groq
+langchain-chroma
+chromadb
+langchain-huggingface
+sentence-transformers
+langchain-text-splitters
+langchain-community
+pypdf

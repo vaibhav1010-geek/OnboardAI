@@ -1,0 +1,8 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "/^& 'C:\\\\Users\\\\gupta\\\\lang-graph\\\\\\.venv\\\\Scripts\\\\python\\.exe' -c \"import ddgs\\.exceptions, inspect; print\\(ddgs\\.exceptions\\.DDGSException\\); print\\(inspect\\.signature\\(ddgs\\.exceptions\\.DDGSException\\)\\)\"$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  }
+}

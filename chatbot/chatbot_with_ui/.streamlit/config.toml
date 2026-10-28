@@ -1,0 +1,17 @@
+[theme]
+base = "light"
+primaryColor = "#17695E"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F7F7F5"
+textColor = "#1A1A1A"
+font = "sans serif"
+
+[client]
+# Removes the "Deploy" button and keeps only a minimal toolbar
+toolbarMode = "minimal"
+
+[server]
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false

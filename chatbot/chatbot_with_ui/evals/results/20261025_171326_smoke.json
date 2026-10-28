@@ -1,0 +1,428 @@
+{
+  "label": "smoke",
+  "config": {
+    "llm": "openai/gpt-oss-120b",
+    "temperature": 0.1,
+    "embedding_model": "BAAI/bge-m3",
+    "chunk_size": 900,
+    "chunk_overlap": 120,
+    "top_k": 4,
+    "min_relevance": 0.35,
+    "stale_after_days": 365
+  },
+  "summary": {
+    "overall": {
+      "n": 10,
+      "passed": 10,
+      "pct": 100.0
+    },
+    "by_category": {
+      "fact": {
+        "n": 10,
+        "passed": 10,
+        "pct": 100.0
+      }
+    },
+    "secondary": {
+      "retrieval_hit_rate": {
+        "pct": 100.0,
+        "n": 10
+      },
+      "citation_rate": {
+        "pct": 100.0,
+        "n": 10
+      },
+      "false_escalation_rate": {
+        "pct": 0.0,
+        "n": 10
+      }
+    }
+  },
+  "results": [
+    {
+      "case": {
+        "id": "F01",
+        "category": "fact",
+        "question": "How many days of annual leave do I get per year?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "24"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "24 days of paid annual leave per calendar year."
+      },
+      "raw": {
+        "final": "Every full‑time employee receives **24 days of paid annual leave per calendar year**. Leave accrues at 2 days per month from your start date and can be used once it has accrued. Up to 10 unused days may be carried over; any excess lapses on 31 December.\n\n**Sources**  \n[1] Leave and Holiday Policy – Annual leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[2] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[3] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[4] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F02",
+        "category": "fact",
+        "question": "How fast does my annual leave build up?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "2 days",
+            "two days"
+          ],
+          [
+            "month"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "It accrues at 2 days per month."
+      },
+      "raw": {
+        "final": "Your annual leave accrues at **2 days per month** (24 days per calendar year), starting from your joining date. You can begin using the leave as soon as it has accrued.  \n\n**Sources**  \n[1] Leave and Holiday Policy – Annual leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[2] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[3] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.\n\n---\n\n[4] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F03",
+        "category": "fact",
+        "question": "How many unused leave days can I carry over to next year?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "10"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "Up to 10 days carry over; the rest lapse on 31 December."
+      },
+      "raw": {
+        "final": "Up to **10 unused annual leave days** can be carried over into the next calendar year; any days beyond that lapse on 31 December. [1]\n\n**Sources**  \n[1] Leave and Holiday Policy – Annual leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[2] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[3] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.\n\n---\n\n[4] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F04",
+        "category": "fact",
+        "question": "Where do I apply for leave?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "peoplehub"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "In the PeopleHub portal under Time Off > New Request."
+      },
+      "raw": {
+        "final": "You can request time off in **PeopleHub**:\n\n1. Open PeopleHub and go to **Time Off → New Request**.  \n2. Choose the leave type and dates.  \n3. Submit; your manager will approve or decline within 2 working days.  \n4. For leave of 3 + consecutive days, submit at least 5 working days in advance.\n\n**Sources**  \n[1] Leave and Holiday Policy – How to apply (updated 2026-01-15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.\n\n---\n\n[2] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[3] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[4] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F05",
+        "category": "fact",
+        "question": "How much notice do I need to give for a 4 day leave?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "5 working days",
+            "five working days",
+            "5 business days"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "At least 5 working days in advance for 3 or more consecutive days."
+      },
+      "raw": {
+        "final": "You need to submit the request **at least 5 working days before** the start of a 4‑day leave. The request is made in PeopleHub → Time Off → New Request, and your manager will approve or decline it within 2 working days.  \n\n**Sources**  \n[1] Leave and Holiday Policy – How to apply (updated 2026‑01‑15) – “Leave of 3 or more consecutive working days must be requested at least 5 working days in advance.”",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.\n\n---\n\n[2] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[3] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.\n\n---\n\n[4] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F06",
+        "category": "fact",
+        "question": "How many paid sick days do I get?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "8 ",
+            "eight"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "8 paid sick days per year."
+      },
+      "raw": {
+        "final": "Employees receive **8 paid sick days per year**. A medical certificate is required if the sick leave spans 3 or more consecutive days, and you should notify your manager as early as possible on the first day of absence [1].\n\n**Sources**  \n[1] Leave and Holiday Policy – Sick leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[2] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - Payment (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > Payment\nApproved claims are paid within 15 working days of approval.\n\n---\n\n[4] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F07",
+        "category": "fact",
+        "question": "When do I need a medical certificate for sick leave?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "3 or more",
+            "three or more",
+            "3 consecutive",
+            "three consecutive"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "When sick leave covers 3 or more consecutive days."
+      },
+      "raw": {
+        "final": "A medical certificate is required when your sick‑leave absence is **3 or more consecutive days**. Tell your manager as early as possible on the first day of absence.  \n\n**Sources**  \n[1] Leave and Holiday Policy – Sick leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[2] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[3] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.\n\n---\n\n[4] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F08",
+        "category": "fact",
+        "question": "How many public holidays does the company observe?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "10",
+            "ten"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "10 public holidays per year."
+      },
+      "raw": {
+        "final": "The company observes **10 public holidays** each year [1].\n\n**Sources**  \n[1] Leave and Holiday Policy – Public holidays (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Public holidays (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Public holidays\nThe company observes 10 public holidays per year. The list for each year is published in PeopleHub in December of the previous year. If you work in a different city, the holiday list for your office applies.\n\n---\n\n[2] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[3] Remote and Hybrid Work Policy - Hybrid schedule (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Hybrid schedule\nEmployees work from the office 3 days a week: Tuesday, Wednesday and Thursday. Mondays and Fridays are flexible remote days unless your team says otherwise.\n\n---\n\n[4] Probation and Performance Reviews - Probation (file: probation_and_reviews.md, last updated: 2026-01-20)\nProbation and Performance Reviews > Probation\nNew employees serve a probation period of 6 months. Leave accrues as normal during probation. The notice period during probation is 15 days on either side.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F09",
+        "category": "fact",
+        "question": "How long is parental leave for a primary caregiver?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "26"
+          ]
+        ],
+        "expected_sources": [
+          "leave_and_holiday_policy.md"
+        ],
+        "reference": "26 weeks of paid leave for primary caregivers."
+      },
+      "raw": {
+        "final": "Primary caregivers receive **26 weeks of paid parental leave**. Secondary caregivers receive 4 weeks. To start the process, contact the People Team at people@acmedemo.example.\n\n**Sources**  \n[1] Leave and Holiday Policy – Parental leave (updated 2026‑01‑15)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Leave and Holiday Policy - Parental leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Parental leave\nPrimary caregivers get 26 weeks of paid parental leave and secondary caregivers get 4 weeks. Contact the People Team at people@acmedemo.example to start the process. Do not discuss personal medical details in chat; the People Team handles those privately.\n\n---\n\n[2] Leave and Holiday Policy - Annual leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Annual leave\nEvery full-time employee gets 24 days of paid annual leave per calendar year. Leave accrues at 2 days per month, starting from the joining date, and can be used from day one once it has accrued.  \nUp to 10 unused days can be carried over into the next year. Anything above 10 days lapses on 31 December.\n\n---\n\n[3] Leave and Holiday Policy - Sick leave (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > Sick leave\nEmployees get 8 paid sick days per year. A medical certificate is required when sick leave covers 3 or more consecutive days. Tell your manager as early as possible on the first day of absence.\n\n---\n\n[4] Leave and Holiday Policy - How to apply (file: leave_and_holiday_policy.md, last updated: 2026-01-15)\nLeave and Holiday Policy > How to apply\nApply in the PeopleHub portal under Time Off > New Request. Leave of 3 or more consecutive working days must be requested at least 5 working days in advance. Your manager approves or declines within 2 working days.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    },
+    {
+      "case": {
+        "id": "F10",
+        "category": "fact",
+        "question": "How much is the home office allowance and when can I claim it?",
+        "role": "Engineering",
+        "expected_facts": [
+          [
+            "15000"
+          ],
+          [
+            "90 days",
+            "90"
+          ]
+        ],
+        "expected_sources": [
+          "remote_work_policy.md"
+        ],
+        "reference": "A one-time Rs 15,000 allowance after 90 days with the company."
+      },
+      "raw": {
+        "final": "- The home‑office allowance is a **one‑time Rs 15,000** stipend for items such as a chair, desk, or monitor.  \n- You become eligible to claim it **after completing 90 days of employment**.  \n- Submit the claim (with receipts) through **ExpenseDesk**. Once approved, the payment is made in the next payroll cycle, typically within **10 working days** of approval【1】,【2】.\n\n**Sources**  \n[1] Remote and Hybrid Work Policy – Home office allowance (updated 2026‑02‑01)  \n[2] Expense Reimbursement Policy – Payment (updated 2026‑02‑10)",
+        "tool_calls": [
+          "search_policies"
+        ],
+        "retrieved": "[1] Remote and Hybrid Work Policy - Home office allowance (file: remote_work_policy.md, last updated: 2026-02-01)\nRemote and Hybrid Work Policy > Home office allowance\nAfter completing 90 days with the company, you can claim a one-time home office allowance of Rs 15,000 for a chair, desk or monitor. Submit it through ExpenseDesk with receipts.\n\n---\n\n[2] Expense Reimbursement Policy - Payment (file: expense_reimbursement.md, last updated: 2026-02-10)\nExpense Reimbursement Policy > Payment\nApproved claims are paid in the next payroll cycle, and always within 10 working days of approval. Questions go to finance@acmedemo.example.\n\n---\n\n[3] Expense Reimbursement Policy (2023 version) - How to submit (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > How to submit\nSubmit claims by email to finance@acmedemo.example within 45 days of the expense date.\n\n---\n\n[4] Expense Reimbursement Policy (2023 version) - Payment (file: expense_reimbursement_2023_OLD.md, last updated: 2023-04-01)  [OUTDATED: older than 1 year, may no longer apply]\nExpense Reimbursement Policy (2023 version) > Payment\nApproved claims are paid within 15 working days of approval.",
+        "escalated": false,
+        "pending": null,
+        "error": null
+      },
+      "score": {
+        "passed": true,
+        "checks": {
+          "facts_present": true,
+          "not_escalated": true,
+          "retrieval_hit": true,
+          "cited": true
+        },
+        "reasons": []
+      }
+    }
+  ]
+}
